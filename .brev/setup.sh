@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 set -eo pipefail
 
 #conda init zsh
@@ -7,9 +8,9 @@ set -eo pipefail
 #eval "$(conda shell.bash hook)"
 #conda activate base
 
-pip install torch torchvision pandas numpy matplotlib scikit-learn scipy
-pip install tqdm
-pip install tensorboard==1.14
+#pip install torch torchvision pandas numpy matplotlib scikit-learn scipy
+#pip install tqdm
+#pip install tensorboard==1.14
 
 echo "######## this running??? #########"
 
@@ -41,7 +42,16 @@ sudo pip3 install virtualenv
 #sudo apt update && sudo apt install -y zsh
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended || true
 # set default shell to zsh
+
+echo "######### Shell before"
+cat /etc/passwd | grep ubuntu
+echo $USER
+
 sudo chsh -s /bin/bash $USER
+
+echo "######### Shell after"
+cat /etc/passwd | grep ubuntu
+echo $USER
 
 # add `"terminal.integrated.defaultProfile.linux": "zsh"` to .vscode-server/data/Machine/settings.json
 #python3 - <<EOF
